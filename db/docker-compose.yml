@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.3-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      # TODO use env variable to protect password
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./database_init:/docker-entrypoint-initdb.d/
+
+volumes:
+  db_data:
+    driver: local
+
+# debug commands
+# psql -h localhost -p 5432 -U postgres
+# dc exec db sh
