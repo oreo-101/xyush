@@ -106,3 +106,9 @@ dist
 
 # special
 gitcommand.sh
+
+
+# SpringBoot
+backend/.m2
+backend/.mvn
+backend/target
