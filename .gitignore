@@ -109,6 +109,6 @@ gitcommand.sh
 
 
 # SpringBoot
-backend/.m2
-backend/.mvn
-backend/target
+server/.m2
+server/.mvn
+server/target

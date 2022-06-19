@@ -1,5 +1,18 @@
 version: '3.8'
 services:
+  server:
+    build:
+      context: ./server/
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/app
+      - ./server/.m2:/root/.m2
+    working_dir: /app
+    command: sh run.sh
+    ports:
+      - 8080:8080
+      - 35729:35729
+      - 5005:5005
   db:
     image: postgres:14.3-alpine
     restart: always
@@ -11,7 +24,7 @@ services:
       - '5432:5432'
     volumes:
       - db_data:/var/lib/postgresql/data
-      - ./database_init:/docker-entrypoint-initdb.d/
+      - ./db/database_init:/docker-entrypoint-initdb.d/
 
 volumes:
   db_data:
