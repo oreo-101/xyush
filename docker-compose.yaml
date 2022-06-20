@@ -1,6 +1,8 @@
 version: '3.8'
 services:
   server:
+    depends_on:
+    - db
     build:
       context: ./server/
       dockerfile: Dockerfile
@@ -32,4 +34,5 @@ volumes:
 
 # debug commands
 # psql -h localhost -p 5432 -U postgres
+# psql -h localhost -p 5432 -U server_user -d appdb
 # dc exec db sh
