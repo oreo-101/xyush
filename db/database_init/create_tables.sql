@@ -40,3 +40,10 @@ CREATE USER server_user with encrypted password 'dontlook';
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO server_user;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO server_user;
 
+
+-- Add data to JPA managed tables
+INSERT INTO roles (name) VALUES ('ROLE_USER');
+INSERT INTO roles (name) VALUES ('ROLE_MODERATOR');
+INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
+
+
