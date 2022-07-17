@@ -1,12 +1,26 @@
 <template>
   <div class="hello">
-    {{ posts }}
+    Hello world page
   </div>
 </template>
 
 <script lang="ts">
-import { useAllPosts } from '@/api/PostAPI';
 import { defineComponent } from 'vue';
+import { authTest, signup } from "@/api/User";
+
+const signupTest = () => {
+
+  const roles: Set<String> = new Set();
+  roles.add("ROLE_USER");
+
+  signup({ username: "leo", email: "leo@oreo.com", roles: roles, password: "124" })
+    .then(data => {
+      console.log(data);
+    }).catch(error => {
+      console.log("error", error);
+    });
+
+}
 
 export default defineComponent({
   name: 'HelloWorld',
@@ -14,9 +28,16 @@ export default defineComponent({
     msg: String,
   },
   setup() {
-    const posts = useAllPosts();
+    // const posts = useAllPosts();
+
+    authTest().then(data => {
+      console.log(data)
+    })
+
+    signupTest();
+
     return {
-      posts
+      posts: []
     }
   }
 });

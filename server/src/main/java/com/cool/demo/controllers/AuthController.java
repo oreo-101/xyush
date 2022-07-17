@@ -29,9 +29,12 @@ import com.cool.demo.repository.UserRepository;
 import com.cool.demo.security.jwt.JwtUtils;
 import com.cool.demo.security.services.UserDetailsImpl;
 
+import lombok.extern.log4j.Log4j2;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+@Log4j2
 public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
@@ -51,6 +54,9 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+
+        log.info("attempt signin {}", loginRequest);
+
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
