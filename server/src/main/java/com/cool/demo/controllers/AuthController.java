@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
@@ -33,7 +32,6 @@ import lombok.extern.log4j.Log4j2;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
 @Log4j2
 public class AuthController {
     @Autowired
@@ -47,13 +45,13 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
-    @GetMapping("/test")
+    @GetMapping("/api/auth/test")
     public ResponseEntity<String> test() {
         return ResponseEntity.ok("Good ");
     }
 
-    @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+    @PostMapping(Urls.SIGNIN)
+    public ResponseEntity<JwtResponse> authenticateUser(@RequestBody LoginRequest loginRequest) {
 
         log.info("attempt signin {}", loginRequest);
 
@@ -64,7 +62,10 @@ public class AuthController {
 
         final UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         final List<String> roles = userDetails.getAuthorities().stream()
-                .map(item -> item.getAuthority())
+                .map(item -> {
+                    final String str = item.getAuthority();
+                    return str.substring(Math.min(5, str.length()));
+                })
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(JwtResponse.builder()
@@ -76,7 +77,7 @@ public class AuthController {
                 .build());
     }
 
-    @PostMapping("/signup")
+    @PostMapping(Urls.SIGNUP)
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity

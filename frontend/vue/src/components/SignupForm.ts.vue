@@ -40,7 +40,7 @@ export default defineComponent({
 
 
         const register = () => {
-            const roles: Set<String> = new Set();
+            const roles: Set<string> = new Set();
             roles.add("ROLE_USER");
             const req: SignupRequest = {
                 username: username.value,

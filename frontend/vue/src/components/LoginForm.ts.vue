@@ -5,15 +5,18 @@
 
         {{ notification }}
         <div class="singup-form">
-            <div class="input-group">
-                <div class="label">User Name</div>
-                <input v-model="username" type="text" placeholder="username" />
-            </div>
-            <div class="input-group">
-                <div class="label">Password</div>
-                <input v-model="password" type="text" placeholder="password" />
-            </div>
-            <button type="submit" @click="loginUser">Login</button>
+            <form @submit.prevent>
+                <div class="input-group">
+                    <div class="label">User Name</div>
+                    <input v-model="usernameInput" type="text" placeholder="username" />
+                </div>
+                <div class="input-group">
+                    <div class="label">Password</div>
+                    <input v-model="passwordInput" type="text" placeholder="password" />
+                </div>
+                <button type="submit" @click="loginUser">Login</button>
+                <!-- <input type="submit" @click="loginUser" style="display: none" /> -->
+            </form>
         </div>
     </div>
 </template>
@@ -21,38 +24,45 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { login, LoginRequest } from "@/api/User";
+import { safeInject, USER_MANAGER_KEY } from '@/manager/providers';
+import { useRoute } from 'vue-router';
+import router from '@/router';
+import { isArray } from '@vue/shared';
 
 export default defineComponent({
     name: 'LoginForm',
     setup() {
-        // const posts = useAllPosts();
 
-        const username = ref("");
-        const password = ref("");
+        const route = useRoute();
+        const nextUrl = route.params?.next;
+
+        const usernameInput = ref("");
+        const passwordInput = ref("");
 
         const notification = ref("");
 
+        const userManager = safeInject(USER_MANAGER_KEY);
+
 
         const loginUser = () => {
-            const roles: Set<String> = new Set();
-            roles.add("ROLE_USER");
-            const req: LoginRequest = {
-                username: username.value,
-                password: password.value,
-            };
-            login(req)
-                .then(respose => {
-                    notification.value = respose.data as unknown as string;
-                }).catch(error => {
-                    notification.value = error;
-                });
+            userManager.login({
+                username: usernameInput.value,
+                password: passwordInput.value,
+            }).then(() => {
+                if (nextUrl && !isArray(nextUrl)) {
+                    router.push({ name: nextUrl });
+                } else {
+                    // report signed in
+                    // or direct to user page
+                    router.push({ name: "MyInfo" });
+                }
+            })
         }
 
 
         return {
-            username,
-            password,
+            usernameInput,
+            passwordInput,
             notification,
             loginUser,
         }

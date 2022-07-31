@@ -1,32 +1,21 @@
 <template>
   <div class="hello">
     Hello world page
+    <PostingsView />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { authTest, signup } from "@/api/User";
-
-const signupTest = () => {
-
-  const roles: Set<String> = new Set();
-  roles.add("ROLE_USER");
-
-  signup({ username: "leo", email: "leo@oreo.com", roles: roles, password: "124" })
-    .then(data => {
-      console.log(data);
-    }).catch(error => {
-      console.log("error", error);
-    });
-
-}
+import { authTest } from "@/api/User";
+import PostingsView from './PostingsView.ts.vue';
 
 export default defineComponent({
   name: 'HelloWorld',
   props: {
     msg: String,
   },
+  components: { PostingsView },
   setup() {
     // const posts = useAllPosts();
 
@@ -34,7 +23,6 @@ export default defineComponent({
       console.log(data)
     })
 
-    signupTest();
 
     return {
       posts: []
