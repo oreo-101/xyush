@@ -2,13 +2,9 @@
   <div>
     <CreatePostForm />
     <div>
-      All posts:
-      <br />
-      <div>
-        <PostItem v-for="post in posts.data" :key="post.id" :data="post">
-          {{ post }}
-        </PostItem>
-      </div>
+      <PostItem v-for="post in posts.data" :key="post.id" :data="post">
+        {{ post }}
+      </PostItem>
     </div>
   </div>
 </template>

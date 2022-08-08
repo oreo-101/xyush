@@ -1,14 +1,21 @@
 import { createWebHistory, createRouter } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.ts.vue";
+// import HelloWorld from "@/components/HelloWorld.ts.vue";
+import LandingPage from "@/pages/LandingPage.ts.vue";
 import SignupForm from "@/components/SignupForm.ts.vue";
 import LoginForm from "@/components/LoginForm.ts.vue";
 import MyInfoPage from "@/pages/MyInfoPage.ts.vue";
+import CampusCirclePage from "@/pages/CampusCirclePage.ts.vue";
 
 const routes = [
     {
         path: "/",
         name: "Home",
-        component: HelloWorld,
+        component: LandingPage,
+    },
+    {
+        path: "/campus-circle",
+        name: "CampusCircle",
+        component: CampusCirclePage,
     },
     {
         path: "/signup",

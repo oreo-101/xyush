@@ -3,6 +3,10 @@
     <span>
       <router-link :to="{ name: 'Home' }">Home</router-link>
     </span>
+    <span>
+      |
+      <router-link :to="{ name: 'CampusCircle' }">科大圈</router-link>
+    </span>
     <span v-if="!isSignedIn">
       |
       <router-link :to="{ name: 'Login' }">Login Page</router-link>
