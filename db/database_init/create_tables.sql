@@ -1,25 +1,6 @@
 CREATE DATABASE appdb;
 \c appdb;
 
--- CREATE TABLE app_user (
---     userid SERIAL PRIMARY KEY,
---     username varchar(16) UNIQUE NOT NULL,
---     password varchar(50) NOT NULL,
---     display_name varchar(100) 
--- );
-
--- dev users
--- INSERT INTO app_user (username, password, display_name) values ('dev', 'dev', 'Magic dev 1'), ('dev2', 'dev2', 'Magic dev 2');
-
--- CREATE TABLE post (
---     postid SERIAL PRIMARY KEY,
---     userid INTEGER NOT NULL,
---     content varchar(1000),
---     created_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
---     updated_at TIMESTAMP with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
--- );
-
-
 
 -- Auto updated updated_at column
 CREATE OR REPLACE FUNCTION track_updated_at_column() 

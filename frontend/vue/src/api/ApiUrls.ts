@@ -12,5 +12,7 @@ export default {
     SIGN_IN: api("/auth/signin"),
     SIGN_UP: api("/auth/signup"),
     AUTH_TEST: api("/auth/test"),
+    POST_CATEGORY_ALL: api("/post_category/all"),
+    POST_CATEGORY_CREATE: api("/post_category/create"),
 };
 

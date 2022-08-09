@@ -19,6 +19,10 @@
       |
       <router-link v-if="isSignedIn" :to="{ name: 'MyInfo' }">My Details</router-link>
     </span>
+    <span v-if="isSignedIn && isAdmin">
+      |
+      <router-link :to="{ name: 'AdminPage' }">Admin</router-link>
+    </span>
   </div>
 </template>
 
@@ -34,6 +38,7 @@ export default defineComponent({
 
     return {
       isSignedIn: userManager.isSignedIn,
+      isAdmin: userManager.isAdmin,
     }
 
   }

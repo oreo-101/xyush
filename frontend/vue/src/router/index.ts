@@ -5,6 +5,7 @@ import SignupForm from "@/components/SignupForm.ts.vue";
 import LoginForm from "@/components/LoginForm.ts.vue";
 import MyInfoPage from "@/pages/MyInfoPage.ts.vue";
 import CampusCirclePage from "@/pages/CampusCirclePage.ts.vue";
+import AdminPage from "@/pages/AdminPage.ts.vue";
 
 const routes = [
     {
@@ -32,6 +33,11 @@ const routes = [
         name: "MyInfo",
         component: MyInfoPage,
     },
+    {
+        path: "/admin",
+        name: "AdminPage",
+        component: AdminPage,
+    }
 ];
 
 const router = createRouter({

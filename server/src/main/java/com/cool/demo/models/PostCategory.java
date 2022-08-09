@@ -1,41 +1,33 @@
 package com.cool.demo.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
+@Table(name = "post_category", uniqueConstraints = { @UniqueConstraint(columnNames = "name") })
 @Builder
 @AllArgsConstructor
-@Entity
-@Table(name = "roles")
-public class Role {
+@NoArgsConstructor
+public class PostCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
     private Integer id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20)
+    @Size(max = 20)
     @Getter
     @Setter
-    private ERole name;
-
-    public Role() {
-    }
-
-    public Role(ERole name) {
-        this.name = name;
-    }
-
+    private String name;
 }

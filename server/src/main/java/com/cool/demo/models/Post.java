@@ -1,13 +1,18 @@
 package com.cool.demo.models;
 
 import java.util.Date;
+import java.util.Set;
+import java.util.HashSet;
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -42,6 +47,10 @@ public class Post {
 
     @Column(name = "updated_at")
     public Date updatedAt;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "post_categories", joinColumns = @JoinColumn(name = "post_category_id"))
+    private Set<PostCategory> categories = new HashSet<>();
 
     @PrePersist
     void createdAt() {

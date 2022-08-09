@@ -17,6 +17,10 @@ export default class UserManager {
         return this.username.value !== "" && this.error.value === ""
     })
 
+    isAdmin: ComputedRef<boolean> = computed(() => {
+        return this.isSignedIn.value && this.roles.value.includes("ADMIN");
+    })
+
     constructor() {
     }
 
@@ -31,6 +35,8 @@ export default class UserManager {
                 this.id.value = res.data.id;
                 this.roles.value = res.data.roles;
                 this.token.value = res.data.token;
+                console.log("Roles " + this.roles.value);
+
             })
             .catch((e: AxiosError) => {
                 if (e.response?.status === 401) {
