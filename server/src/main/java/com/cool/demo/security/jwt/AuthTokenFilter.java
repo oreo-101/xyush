@@ -30,10 +30,10 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         try {
-            log.error("Got request [{}]", request.getHeaderNames());
-            log.error("Got request [{}]", request.getHeader("Authorization"));
+            // log.error("Got request [{}]", request.getHeaderNames());
+            // log.error("Got request [{}]", request.getHeader("Authorization"));
             final String jwt = parseJwt(request);
-            log.error("parsing jwt [{}]", jwt);
+            // log.error("parsing jwt [{}]", jwt);
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 final String username = jwtUtils.getUserNameFromJwtToken(jwt);
                 final UserDetails userDetails = userDetailsService.loadUserByUsername(username);

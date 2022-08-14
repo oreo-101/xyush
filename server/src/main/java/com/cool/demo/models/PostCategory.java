@@ -30,4 +30,8 @@ public class PostCategory {
     @Getter
     @Setter
     private String name;
+
+    public PostCategory(String name) {
+        this.name = name;
+    }
 }

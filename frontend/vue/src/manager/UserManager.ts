@@ -35,10 +35,7 @@ export default class UserManager {
                 this.id.value = res.data.id;
                 this.roles.value = res.data.roles;
                 this.token.value = res.data.token;
-                console.log("Roles " + this.roles.value);
-
-            })
-            .catch((e: AxiosError) => {
+            }).catch((e: AxiosError) => {
                 if (e.response?.status === 401) {
                     console.log("Not authorized");
                     this.error.value = "Not authorized";

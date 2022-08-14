@@ -8,35 +8,35 @@
     </div>
     <div class="navigation-box">
       <div id="课表" class="navigation-button">
-        <font-awesome-icon class="icon" icon="fa-regular fa-calendar-days" />
+        <font-awesome-icon class="icon" icon="fa-regular fa-calendar-days" size="xl" />
         <div>课表</div>
       </div>
       <div id="成绩" class="navigation-button">
-        <font-awesome-icon class="icon" icon="fa-solid fa-chart-column" />
+        <font-awesome-icon class="icon" icon="fa-solid fa-chart-column" size="xl" />
         <div>成绩</div>
       </div>
       <div id="考试" class="navigation-button">
-        <font-awesome-icon class="icon" icon="fa-solid fa-pencil" />
+        <font-awesome-icon class="icon" icon="fa-solid fa-pencil" size="xl" />
         <div>考试</div>
       </div>
       <div id="空教室" class="navigation-button">
-        <font-awesome-icon class="icon" icon="fa-solid fa-magnifying-glass-location" />
+        <font-awesome-icon class="icon" icon="fa-solid fa-magnifying-glass-location" size="xl" />
         <div>空教室</div>
       </div>
       <div id="外卖红包" class="navigation-button">
-        <font-awesome-icon class="icon" icon="fa-solid fa-coins" />
+        <font-awesome-icon class="icon" icon="fa-solid fa-coins" size="xl" />
         <div>外卖红包</div>
       </div>
       <div id="电话本" class="navigation-button">
-        <font-awesome-icon class="icon" icon="fa-solid fa-address-book" />
+        <font-awesome-icon class="icon" icon="fa-solid fa-address-book" size="xl" />
         <div>电话本</div>
       </div>
       <div id="地图" class="navigation-button">
-        <font-awesome-icon class="icon" icon="fa-solid fa-location-dot" />
+        <font-awesome-icon class="icon" icon="fa-solid fa-location-dot" size="xl" />
         <div>地图</div>
       </div>
       <div id="黑商" class="navigation-button">
-        <font-awesome-icon class="icon" icon="fa-solid fa-store" />
+        <font-awesome-icon class="icon" icon="fa-solid fa-store" size="xl" />
         <div>黑商</div>
       </div>
     </div>

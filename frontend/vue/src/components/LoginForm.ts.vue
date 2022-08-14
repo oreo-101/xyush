@@ -28,6 +28,7 @@ import { safeInject, USER_MANAGER_KEY } from '@/manager/providers';
 import { useRoute } from 'vue-router';
 import router from '@/router';
 import { isArray } from '@vue/shared';
+import { AxiosError } from 'axios';
 
 export default defineComponent({
     name: 'LoginForm',
@@ -56,6 +57,11 @@ export default defineComponent({
                     // or direct to user page
                     router.push({ name: "MyInfo" });
                 }
+            }).catch((error: AxiosError) => {
+                if (error.response?.status === 401) {
+                    notification.value = "Username or password incorrect";
+                }
+                console.log(error)
             })
         }
 

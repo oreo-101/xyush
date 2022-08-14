@@ -26,9 +26,9 @@ const useAllPosts = (userManager: UserManager) => {
 }
 
 const useCreatePost = (userManager: UserManager) => {
-  return (content: string) => {
+  return (post: CreatePost) => {
     return ax.post(URLS.POSTS_CREATE,
-      content, {
+      post, {
       headers: { Authorization: userManager.token.value },
     });
   };
@@ -70,6 +70,12 @@ export type Post = {
   content: string;
   createdAt: string;
   udpatedAt: string;
+  categories: PostCategory[];
+}
+
+export type CreatePost = {
+  content: string,
+  categories: string[],
 }
 
 export type PostCategory = {

@@ -49,5 +49,7 @@ export default defineComponent({
   padding: 3px 12px 2px 12px;
   border-radius: 8px;
   margin: 0 5px;
+  display: inline-block;
+  font-size: 0.8rem;
 }
 </style>
