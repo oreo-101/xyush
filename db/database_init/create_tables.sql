@@ -23,8 +23,8 @@ GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO server_user;
 
 
 -- Add data to JPA managed tables
-INSERT INTO roles (name) VALUES ('ROLE_USER');
-INSERT INTO roles (name) VALUES ('ROLE_MODERATOR');
-INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
+-- INSERT INTO roles (name) VALUES ('ROLE_USER');
+-- INSERT INTO roles (name) VALUES ('ROLE_MODERATOR');
+-- INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
 
 
